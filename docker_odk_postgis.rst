@@ -45,9 +45,9 @@ Postgis container
 ========================
 
 Help source:
-- http://docs.docker.com/examples/postgresql_service/#using-container-linking
-- https://registry.hub.docker.com/u/kartoza/postgis/
-- http://zaiste.net/2013/08/docker_postgresql_how_to/
++ http://docs.docker.com/examples/postgresql_service/#using-container-linking
++ https://registry.hub.docker.com/u/kartoza/postgis/
++ http://zaiste.net/2013/08/docker_postgresql_how_to/
 
 .. code-block :: bash
 
@@ -113,9 +113,10 @@ Odk Aggregate
 ========================
 
 > https://opendatakit.org/downloads/download-info/odk-aggregate-linux-x64-installer-run/
-double clic on 'ODK Aggregate v1.4.5 linux-x64-installer.run' to open the Setup window (user:aggregate) // create folder 'ODK Aggregate' in PRODUCTION/Sauvegardes/OpenDataKit
-- http://192.168.111.191:8080/manager to deploy the .war
-- http://192.168.111.191:8080/ODKAggregate/ the index page 
+double clic on 'ODK Aggregate v1.4.5 linux-x64-installer.run' to open the Setup window `user:aggregate` 
+Create folder `ODK Aggregate` in `PRODUCTION/Sauvegardes/OpenDataKit`
++ http://192.168.111.191:8080/manager to deploy the .war
++ http://192.168.111.191:8080/ODKAggregate/ the index page 
 
 Now to launch an ODKAggregate session :
 
