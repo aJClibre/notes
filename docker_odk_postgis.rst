@@ -44,9 +44,10 @@ And run
 Postgis container 
 ========================
 
-=> http://docs.docker.com/examples/postgresql_service/#using-container-linking
-https://registry.hub.docker.com/u/kartoza/postgis/
-http://zaiste.net/2013/08/docker_postgresql_how_to/
+Help source:
+- http://docs.docker.com/examples/postgresql_service/#using-container-linking
+- https://registry.hub.docker.com/u/kartoza/postgis/
+- http://zaiste.net/2013/08/docker_postgresql_how_to/
 
 .. code-block :: bash
 
@@ -71,7 +72,7 @@ Tomcat container
 .. code-block :: bash
 
     $ cd tomcat/
-create the image from ajc/tomcat:vim with tomcat-users.xml
+create the image from ``ajc/tomcat:vim`` with tomcat-users.xml
 
 .. code-block :: bash
 
@@ -80,18 +81,22 @@ create the image from ajc/tomcat:vim with tomcat-users.xml
         RUN apt-get update && apt-get install -y postgresql-client-9.3
     $ docker build -t ajc/tomcat .
 First to know the env variables used with postgis link for tomcat application deployment :
+
 .. code-block :: bash
 
     $ docker run --rm -i -t -p 8080:8080 --link postgis:pg --name "tomcat" tutum/tomcat:6.0 env
 Create the link with postgis container
+
 .. code-block :: bash
 
     $ docker run --rm -i -t -p 8080:8080 --link postgis:pg --name "tomcat" tutum/tomcat:6.0 /bin/bash 
 Another solution to have env variables
+
 .. code-block :: bash
 
     # cat /etc/hosts
 To connect to the DB :
+
 .. code-block :: bash
 
     # psql -h $PG_PORT_5432_TCP_ADDR -p $PG_PORT_5432_TCP_PORT -d odk_prod -U docker --password 
@@ -107,10 +112,10 @@ http://192.168.111.191:8080/manager/status/all#1.0 to see informations
 Odk Aggregate
 ========================
 
-=> https://opendatakit.org/downloads/download-info/odk-aggregate-linux-x64-installer-run/
+> https://opendatakit.org/downloads/download-info/odk-aggregate-linux-x64-installer-run/
 double clic on 'ODK Aggregate v1.4.5 linux-x64-installer.run' to open the Setup window (user:aggregate) // create folder 'ODK Aggregate' in PRODUCTION/Sauvegardes/OpenDataKit
-http://192.168.111.191:8080/manager to deploy the .war
-http://192.168.111.191:8080/ODKAggregate/ the index page 
+- http://192.168.111.191:8080/manager to deploy the .war
+- http://192.168.111.191:8080/ODKAggregate/ the index page 
 
 Now to launch an ODKAggregate session :
 
@@ -123,9 +128,9 @@ Note postgis ip :
 .. code-block :: bash
  
     $ docker run --rm -i -t -p 8080:8080 --link postgis:pg --name "tomcat" tutum/tomcat:6.0 env
-http://192.168.111.191:8080/manager to deploy and start the PRODUCTION\Sauvegardes\OpenDataKit\ODK Aggregate\ODKAggregate.war
-http://build.opendatakit.org/ to create forms
-http://192.168.111.191:8080/ODKAggregate/ load a form created 
+- http://192.168.111.191:8080/manager to deploy and start the PRODUCTION\Sauvegardes\OpenDataKit\ODK Aggregate\ODKAggregate.war
+- http://build.opendatakit.org/ to create forms
+- http://192.168.111.191:8080/ODKAggregate/ load a form created 
 
 Use ODK Collect on Android to download a form and post forms
 
@@ -133,11 +138,4 @@ Use ODK Collect on Android to download a form and post forms
 
     $ psql -h localhost -U docker -p 25432 -d odk_prod
     # \dt odk_prod.* // tables list. Problem with tables with uppercase name
-
-
-Then you can run it as a deamon, on ``localhost:5432``:
-
-.. code-block :: bash
-
-              docker run -i -t --name postgis_data ajc/datadb
 
