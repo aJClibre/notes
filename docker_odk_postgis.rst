@@ -16,11 +16,11 @@ The goal is to mount /var/lib/postgresql/ in a data container mount in a databas
 Data container creation in Docker
 ========================
 
-First create folders
+First create folders host directory
 
 .. code-block :: bash
 
-    $ sudo mkdir /var/lib/postgresql // host directory
+    $ sudo mkdir /var/lib/postgresql
     $ mkdir busybox
     $ cd busybox
 Create the container
@@ -30,7 +30,6 @@ Create the container
     $ vim Dockerfile
     # Dockerfile
         FROM busybox
-        MAINTAINER ArnaudJC <a.jean-charles@valabre.com>
         VOLUME /var/lib/postgresql
         CMD /bin/sh
     $ docker build -t ajc/datadb
@@ -45,9 +44,10 @@ Postgis container
 ========================
 
 Help source:
-+ http://docs.docker.com/examples/postgresql_service/#using-container-linking
-+ https://registry.hub.docker.com/u/kartoza/postgis/
-+ http://zaiste.net/2013/08/docker_postgresql_how_to/
+
+- http://docs.docker.com/examples/postgresql_service/#using-container-linking
+- https://registry.hub.docker.com/u/kartoza/postgis/
+- http://zaiste.net/2013/08/docker_postgresql_how_to/
 
 .. code-block :: bash
 
@@ -115,8 +115,9 @@ Odk Aggregate
 > https://opendatakit.org/downloads/download-info/odk-aggregate-linux-x64-installer-run/
 double clic on 'ODK Aggregate v1.4.5 linux-x64-installer.run' to open the Setup window `user:aggregate` 
 Create folder `ODK Aggregate` in `PRODUCTION/Sauvegardes/OpenDataKit`
-+ http://192.168.111.191:8080/manager to deploy the .war
-+ http://192.168.111.191:8080/ODKAggregate/ the index page 
+
+- http://192.168.111.191:8080/manager to deploy the .war
+- http://192.168.111.191:8080/ODKAggregate/ the index page 
 
 Now to launch an ODKAggregate session :
 
@@ -129,7 +130,7 @@ Note postgis ip :
 .. code-block :: bash
  
     $ docker run --rm -i -t -p 8080:8080 --link postgis:pg --name "tomcat" tutum/tomcat:6.0 env
-- http://192.168.111.191:8080/manager to deploy and start the PRODUCTION\Sauvegardes\OpenDataKit\ODK Aggregate\ODKAggregate.war
+- http://192.168.111.191:8080/manager to deploy and start the `PRODUCTION\Sauvegardes\OpenDataKit\ODK Aggregate\ODKAggregate.war`
 - http://build.opendatakit.org/ to create forms
 - http://192.168.111.191:8080/ODKAggregate/ load a form created 
 
